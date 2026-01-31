@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mock Interview</title>
+    <link rel="icon" href="/static/avatar.png" type="image/png">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Stage 1: Upload -->
+        <div id="upload-stage" class="stage active">
+            <h1>Welcome to the Mock Interview Session</h1>
+            <p>Please upload your resume to begin</p>
+
+            <div class="upload-section">
+                <input type="file" id="resume-upload" hidden accept=".pdf,.docx">
+                <button id="select-file-btn" class="secondary-btn">📂 Select Resume</button>
+                <div id="file-name" class="file-name">No file selected</div>
+            </div>
+
+            <button id="start-btn" class="primary-btn" disabled>Start Interview</button>
+            <div class="loader hidden" id="upload-loader">Initializing AI...</div>
+        </div>
+
+        <!-- Stage 2: Interview -->
+        <div id="interview-stage" class="stage hidden">
+            <div class="avatar-container">
+                <div class="pulse-ring hidden" id="speaking-indicator"></div>
+                <img src="/static/avatar.png" alt="AI Interviewer" class="avatar">
+            </div>
+
+            <div class="question-box">
+                <p id="ai-question" class="question-text">Initializing...</p>
+            </div>
+
+            <div class="controls">
+                <button id="record-btn" class="mic-btn">
+                    🎤
+                </button>
+                <p id="mic-status">Tap to Answer</p>
+            </div>
+        </div>
+
+        <!-- Stage 3: Results -->
+        <div id="result-stage" class="stage hidden">
+            <h1>Interview Complete</h1>
+            <div id="feedback-container"></div>
+            <button onclick="location.reload()">Restart</button>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

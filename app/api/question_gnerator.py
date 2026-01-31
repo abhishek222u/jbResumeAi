@@ -1,8 +1,9 @@
 
 from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi.concurrency import run_in_threadpool
 from app.services.resume_parser import extract_resume_text
 from app.services.resume_ai import convert_resume_to_json
-from app.services.questions_genrator import generate_interview_questions
+from app.services.question_generator import generate_interview_questions
 
 router = APIRouter(prefix="/question")
 def sanitize_json(data: dict) -> dict:
@@ -19,14 +20,14 @@ async def generate_questions_only(file: UploadFile = File(...)):
         if not file_bytes:
             raise HTTPException(status_code=400, detail="Empty file uploaded")
 
-        extracted_text = extract_resume_text(file.filename, file_bytes)
+        extracted_text = await run_in_threadpool(extract_resume_text, file.filename, file_bytes)
         if not extracted_text.strip():
             raise HTTPException(status_code=400, detail="No text extracted")
 
-        ats_json = convert_resume_to_json(extracted_text)
+        ats_json = await run_in_threadpool(convert_resume_to_json, extracted_text)
         clean_data = sanitize_json(ats_json)
 
-        questions = generate_interview_questions(clean_data)
+        questions = await run_in_threadpool(generate_interview_questions, clean_data)
 
         return {
             "status": "success",

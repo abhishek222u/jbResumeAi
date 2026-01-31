@@ -1,0 +1,11 @@
+Error: No JSON object found
+Raw: ["Can you describe a situation where you had to optimize a Python application for performance?", 
+"Design a Docker container for a FastAPI application and explain your reasoning.",
+"How do you handle errors in a FastAPI application, and can you provide an example?",
+"Describe a project you led as a Senior Developer at Tech Solutions Inc, and what were your key accomplishments?",
+"What do you think are the most important considerations when designing a system for scalability?",
+"Can you walk me through your thought process when approaching a complex problem in a real-world scenario?",
+"How do you stay up-to-date with the latest developments in the field of Computer Science, and can you give an example of a recent learning experience?",
+"Can you explain the trade-offs between using a monolithic architecture versus a microservices architecture in a FastAPI application?",
+"Describe a situation where you had to make a difficult technical decision as a Senior Developer, and how did you approach it?",
+"How do you approach testing and validation in a FastAPI application, and what tools do you use?"]
